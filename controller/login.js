@@ -2,18 +2,18 @@ const jwt = require("jsonwebtoken");
 const Student = require("../ models/users");
 
 const loginUser = async (req, res) => {
-  const { email, password } = req.body;
+  const { seatno, password } = req.body;
 
   // Validate input
-  if (!email || !password) {
+  if (!seatno || !password) {
     return res
       .status(400)
-      .json({ message: "Email and password are required." });
+      .json({ message: "Seat No and password are required." });
   }
 
   try {
     // Check if user exists
-    const student = await Student.findOne({ email });
+    const student = await Student.findOne({ seatno });
     if (!student) {
       return res.status(404).json({ message: "Student not found." });
     }
@@ -30,12 +30,13 @@ const loginUser = async (req, res) => {
       { expiresIn: "1h" } // Token expires in 1 hour
     );
 
-    res.status(200).json({
+    return res.status(200).json({
       message: "Login successful.",
       token,
       student: {
         id: student._id,
         name: student.name,
+        seatno: student.seatno,
         email: student.email,
         rollNumber: student.rollNumber,
       },

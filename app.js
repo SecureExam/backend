@@ -2,6 +2,9 @@ const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const authRoutes = require("./routes/authRoutes");
+
+//CORS
+const cors = require("cors");
 // const examRoutes = require("./routes/examRoutes");
 // const monitorRoutes = require("./routes/monitorRoutes");
 
@@ -9,6 +12,14 @@ const authRoutes = require("./routes/authRoutes");
 dotenv.config();
 
 const app = express();
+
+app.use(
+  cors({
+    origin: "http://localhost:5173",
+    methods: ["GET", "POST"], // Define allowed methods
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 // Middleware
 app.use(express.json());

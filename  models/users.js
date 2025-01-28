@@ -3,20 +3,25 @@ const mongoose = require("mongoose");
 const studentSchema = new mongoose.Schema({
   name: {
     type: String,
-    required: true, // Name is mandatory
-    trim: true, // Removes extra spaces
+    required: true,
+    trim: true,
+  },
+  seatno: {
+    type: String,
+    required: true,
+    trim: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true, // Ensures no duplicate emails
-    lowercase: true, // Converts email to lowercase
+    unique: true,
+    lowercase: true,
     trim: true,
   },
   password: {
     type: String,
-    required: true, // Mandatory for authentication
-    minlength: 8, // Ensures password strength
+    required: true,
+    minlength: 8,
   },
   phone: {
     type: String,
@@ -37,7 +42,7 @@ const studentSchema = new mongoose.Schema({
     {
       examId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "Exam", // Reference to the Exam model
+        ref: "Exam",
       },
       score: {
         type: Number,
