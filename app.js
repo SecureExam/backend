@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-// const authRoutes = require("./routes/authRoutes");
+const authRoutes = require("./routes/authRoutes");
 // const examRoutes = require("./routes/examRoutes");
 // const monitorRoutes = require("./routes/monitorRoutes");
 
@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 
 // // Routes
-// app.use("/api/auth", authRoutes);
+app.use("/api/auth", authRoutes);
 // app.use("/api/exams", examRoutes);
 // app.use("/api/monitor", monitorRoutes);
 

@@ -27,11 +27,11 @@ const studentSchema = new mongoose.Schema({
   rollNumber: {
     type: String,
     required: true,
-    unique: true, // Ensures no duplicate roll numbers
+    unique: true,
     trim: true,
-    },
-    suspeciousActivity: {
-        type: Number
+  },
+  suspeciousActivity: {
+    type: Number,
   },
   examsAttempted: [
     {
